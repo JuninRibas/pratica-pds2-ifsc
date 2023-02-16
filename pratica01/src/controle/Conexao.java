@@ -8,7 +8,7 @@ public class Conexao {
 
 	private static Connection conexao;
 	private static Conexao instancia;
-	private static final String DATABASE = "hr";
+	private static final String DATABASE = "ezequiel";
 	private static final String USER = "aluno";
 	private static final String PSW = "aluno";
 
@@ -16,24 +16,24 @@ public class Conexao {
 
 	}
 
-	public Conexao getInstancia() {
+	public static Conexao getInstancia() {
 		if (instancia == null) {
 			instancia = new Conexao();
 		}
 		return instancia;
 	}
 
-	public static Connection conectar() {
+	public Connection conectar() {
 		try {
-			conexao = DriverManager.getConnection(
-					"jdbc:mysql://localhost/"
-			+ DATABASE + "?serverTimezone=UTC", USER, PSW);
+			conexao = DriverManager.getConnection("jdbc:mysql://localhost/" + DATABASE + "?serverTimezone=UTC", USER,
+					PSW);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return conexao;
 	}
-	public static boolean fechaConexao() {
+
+	public boolean fechaConexao() {
 		try {
 			conexao.close();
 		} catch (SQLException e) {
@@ -42,6 +42,5 @@ public class Conexao {
 		}
 		return true;
 	}
-	
 
 }
