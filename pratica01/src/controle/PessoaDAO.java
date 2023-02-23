@@ -19,8 +19,6 @@ public class PessoaDAO {
 		con = Conexao.getInstancia();
 
 		// abrir conexao
-		con.conectar();
-
 		Connection c = con.conectar();
 		try {
 			String query = "INSERT INTO pessoa " + "(nome, cpf) VALUES (?,?);";
@@ -30,6 +28,7 @@ public class PessoaDAO {
 			stm.setInt(2, 123);
 
 			stm.executeUpdate();
+			return true;
 
 		} catch (SQLException e) {
 
@@ -43,11 +42,53 @@ public class PessoaDAO {
 	}
 
 	public boolean atualizar(Pessoa p) {
+		// Instacia classe Conexao
+		con = Conexao.getInstancia();
+
+		// abrir conexao
+		Connection c = con.conectar();
+
+		try {
+			String query = "UPDATE pessoa SET nome= ? WHERE cpf = ?";
+			PreparedStatement stm = c.prepareStatement(query);
+
+			stm.setString(1, p.getNome());
+			stm.setLong(2, p.getCpf());
+
+			stm.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		con.fechaConexao();
 		return false;
 	}
 
 	public boolean deletar(Pessoa p) {
+		// Instacia classe Conexao
+		con = Conexao.getInstancia();
+
+		// abrir conexao
+		Connection c = con.conectar();
+
+		try {
+			String query = "DELET FROM pessoa WHERE cpf = ?";
+			PreparedStatement stm = c.prepareStatement(query);
+
+			stm.setLong(1, p.getCpf());
+
+			stm.executeUpdate();
+			return true;
+
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		con.fechaConexao();
 		return false;
+
 	}
 
 	public ArrayList<Pessoa> listaPessoas() {
@@ -55,9 +96,8 @@ public class PessoaDAO {
 		con = Conexao.getInstancia();
 
 		// abrir conexao
-		con.conectar();
-
 		Connection c = con.conectar();
+
 		ArrayList<Pessoa> pessoas = new ArrayList<>();
 		try {
 			Statement stm = c.createStatement();
