@@ -5,12 +5,19 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.text.MaskFormatter;
+
+import modelo.Pessoa;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
+
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 
 public class TelaCadastro extends JFrame {
@@ -65,7 +72,14 @@ public class TelaCadastro extends JFrame {
 		contentPane.add(txtNome);
 		txtNome.setColumns(10);
 		
-		txtCpf = new JTextField();
+		txtCpf = new JFormattedTextField();
+		MaskFormatter formatter = null;
+		try {
+			formatter = new MaskFormatter("###.###.###-##");
+		} catch (ParseException e2) {
+			e2.printStackTrace();
+		}
+		JTextField txtCpf = new JFormattedTextField(formatter);
 		txtCpf.setColumns(10);
 		txtCpf.setBounds(175, 112, 278, 20);
 		contentPane.add(txtCpf);
@@ -73,9 +87,20 @@ public class TelaCadastro extends JFrame {
 		JButton btnCad = new JButton("Cadastrar");
 		btnCad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				String nome = txtNome.getText();
-				long cpf = Long.valueOf(txtCpf.getText());
-			}
+				String cpf = txtCpf.getText();
+				
+				cpf = cpf.replace(".", ""); // forma feia mas facil
+				cpf = cpf.replace("-", "");
+				
+				long cpfL = Long.valueOf(txtCpf.getText());
+				
+				Pessoa p = new Pessoa();
+				p.setNome(nome);
+				p.setCpf(cpfL);
+			
+		}
 		});
 		btnCad.setFont(new Font("Tahoma", Font.BOLD, 18));
 		btnCad.setBounds(224, 200, 120, 79);
