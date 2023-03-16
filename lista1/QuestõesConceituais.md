@@ -11,3 +11,11 @@ R:JDBC é conexão entre o banco de dados e o código Java.
 
 ex4
 R:O CRUD é o método de Inserir, Editar, Atualizar e Deletar.
+
+exe5
+R: a)A classse Connection permite a conexão com o Banco de Dados, podendo executar instruções SQL do tipo relacional.
+b) A classe PreparedStatement permite criaão de um objeto para uma instrução SQL.
+c) A classe Statement permite a intrução SQL mas com a diferença de que os valores tem que estare 
+
+exe6
+R:
