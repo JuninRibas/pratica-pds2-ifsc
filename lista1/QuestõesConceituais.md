@@ -18,4 +18,7 @@ b) A classe PreparedStatement permite criaão de um objeto para uma instrução 
 c) A classe Statement permite a intrução SQL mas com a diferença de que os valores tem que estare 
 
 exe6
-R:
+R: A principal diferença técnica entre as duas classes é que a classe Statement é compilada pelo banco de dados toda vez que a consulta é executada, enquanto a classe PreparedStatement é pré-compilada apenas uma vez, no momento da criação do objeto e a classe PreparedStatement é mais eficiente em termos de desempenho, pois reduz a sobrecarga do banco de dados.
+
+exe7
+R:SWING é uma biblioteca gráfica nativa do Java que permite criar GUIs com uma ampla variedade de componentes, já o WINDOWBUILDER se baseia em cima da biblioteca SWING. Com o WINDOWBUILDER, o programador pode criar GUIs de forma mais rápida e fácil, utilizando uma interface gráfica.
