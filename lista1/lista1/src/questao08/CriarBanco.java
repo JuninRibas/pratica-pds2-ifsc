@@ -1,4 +1,4 @@
-package lista1;
+package questao08;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,8 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CriarBanco {
+
 	private static final String USER = "root";
-	private static final String PSW = "aluno";
+	private static final String PSW = "JJeess3344.";
     public static void main(String[] args) {
         Connection conn = null;
         Statement stmt = null;
@@ -44,5 +45,7 @@ public class CriarBanco {
             }
         }
     }
+
+
 
 }
